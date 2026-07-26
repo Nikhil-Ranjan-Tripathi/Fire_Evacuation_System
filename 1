@@ -1,0 +1,81 @@
+[ START ]
+   │
+   ▼
+[ Launch Fire Evacuation System ]
+   │
+   ▼
+[ Load Building Layout & Graph ]
+  • Nodes
+  • Connections
+  • Exit Locations
+   │
+   ▼
+[ Initialize Sensor Simulator & Dashboard ]
+   │
+   ▼
+[ User Selects Current Node & Fire Injection Point ]
+   │
+   ▼
+[ Inject Fire ]
+  • Low
+  • Medium
+  • High
+  • Flashover
+   │
+   ▼
+[ Generate Live Sensor Data ]
+  • Temperature
+  • Smoke Density
+  • Flame Detection
+   │
+   ▼
+[ Calculate Fire Risk Score for Every Node ]
+   │
+   ▼
+[ Update Graph Edge Weights ]
+Cost = Distance × (1 + Risk)
+   │
+   ▼
+[ Run Modified A* Algorithm ]
+   │
+   ▼
+[ Safe Path Found? ]
+   ├── Yes ──► [ Return Safe Evacuation Path ] ──────────────────┐
+   │                                                             │
+   └── No  ──► [ Allow LOW Fire Nodes ]                          │
+                  │                                              │
+                  ▼                                              │
+               [ Path Found? ]                                   │
+                  ├── Yes ──► [ Return Route ] ──────────────────┤
+                  │                                              │
+                  └── No  ──► [ Allow MEDIUM Fire Nodes ]        │
+                                 │                               │
+                                 ▼                               │
+                              [ Path Found? ]                    │
+                                 ├── Yes ──► [ Emergency Route ] │
+                                 │           Found               │
+                                 │                               │
+                                 └── No  ──► [ No Safe Route ]   │
+                                             [ Available ]       │
+                                                 │               │
+                                                 └───────┬───────┘
+                                                         │
+                                                         ▼
+[ Update Dashboard ]
+  • Route
+  • Fire Status
+  • Risk Levels
+  • Exit Information
+   │
+   ▼
+[ Generate Push Notifications ]
+  • Fire Alert
+  • Exit Blocked
+  • Route Changed
+  • Evacuation Instructions
+   │
+   ▼
+[ Display Safe Route to User & Mobile Notification ]
+   │
+   ▼
+[ END ]
