@@ -1,81 +1,202 @@
-[ START ]
-   │
-   ▼
-[ Launch Fire Evacuation System ]
-   │
-   ▼
-[ Load Building Layout & Graph ]
-  • Nodes
-  • Connections
-  • Exit Locations
-   │
-   ▼
-[ Initialize Sensor Simulator & Dashboard ]
-   │
-   ▼
-[ User Selects Current Node & Fire Injection Point ]
-   │
-   ▼
-[ Inject Fire ]
-  • Low
-  • Medium
-  • High
-  • Flashover
-   │
-   ▼
-[ Generate Live Sensor Data ]
-  • Temperature
-  • Smoke Density
-  • Flame Detection
-   │
-   ▼
-[ Calculate Fire Risk Score for Every Node ]
-   │
-   ▼
-[ Update Graph Edge Weights ]
-Cost = Distance × (1 + Risk)
-   │
-   ▼
-[ Run Modified A* Algorithm ]
-   │
-   ▼
-[ Safe Path Found? ]
-   ├── Yes ──► [ Return Safe Evacuation Path ] ──────────────────┐
-   │                                                             │
-   └── No  ──► [ Allow LOW Fire Nodes ]                          │
-                  │                                              │
-                  ▼                                              │
-               [ Path Found? ]                                   │
-                  ├── Yes ──► [ Return Route ] ──────────────────┤
-                  │                                              │
-                  └── No  ──► [ Allow MEDIUM Fire Nodes ]        │
-                                 │                               │
-                                 ▼                               │
-                              [ Path Found? ]                    │
-                                 ├── Yes ──► [ Emergency Route ] │
-                                 │           Found               │
-                                 │                               │
-                                 └── No  ──► [ No Safe Route ]   │
-                                             [ Available ]       │
-                                                 │               │
-                                                 └───────┬───────┘
-                                                         │
-                                                         ▼
-[ Update Dashboard ]
-  • Route
-  • Fire Status
-  • Risk Levels
-  • Exit Information
-   │
-   ▼
-[ Generate Push Notifications ]
-  • Fire Alert
-  • Exit Blocked
-  • Route Changed
-  • Evacuation Instructions
-   │
-   ▼
-[ Display Safe Route to User & Mobile Notification ]
-   │
-   ▼
-[ END ]
+# 🔥 AI-Based Smart Fire Evacuation & Dynamic Routing System
+
+## Workflow Diagram
+
+```text
+┌──────────────────────────────┐
+│            START             │
+└──────────────┬───────────────┘
+               │
+               ▼
+┌──────────────────────────────┐
+│ Launch Fire Evacuation System│
+└──────────────┬───────────────┘
+               │
+               ▼
+┌──────────────────────────────┐
+│ Load Building Layout & Graph │
+│ • Nodes                      │
+│ • Connections                │
+│ • Exit Locations             │
+└──────────────┬───────────────┘
+               │
+               ▼
+┌──────────────────────────────┐
+│ Initialize Sensor Simulator  │
+│ & Dashboard                  │
+└──────────────┬───────────────┘
+               │
+               ▼
+┌──────────────────────────────┐
+│ User Selects Current Node    │
+│ and Fire Injection Point     │
+└──────────────┬───────────────┘
+               │
+               ▼
+┌──────────────────────────────┐
+│ Inject Fire                  │
+│ • Low                        │
+│ • Medium                     │
+│ • High                       │
+│ • Flashover                  │
+└──────────────┬───────────────┘
+               │
+               ▼
+┌──────────────────────────────┐
+│ Generate Live Sensor Data    │
+│ • Temperature                │
+│ • Smoke Density              │
+│ • Flame Detection            │
+└──────────────┬───────────────┘
+               │
+               ▼
+┌──────────────────────────────┐
+│ Calculate Fire Risk Score    │
+│ for Every Node               │
+└──────────────┬───────────────┘
+               │
+               ▼
+┌──────────────────────────────┐
+│ Update Graph Edge Weights    │
+│ Cost = Distance × (1 + Risk) │
+└──────────────┬───────────────┘
+               │
+               ▼
+┌──────────────────────────────┐
+│ Run Modified A* Algorithm    │
+└──────────────┬───────────────┘
+               │
+               ▼
+        ┌──────────────────┐
+        │ Safe Path Found? │
+        └───────┬──────────┘
+            Yes │        │ No
+                ▼        ▼
+     ┌────────────────┐  ┌──────────────────────────┐
+     │ Return Safe    │  │ Allow LOW Fire Nodes     │
+     │ Evacuation Path│  └──────────┬───────────────┘
+     └────────┬───────┘             │
+              │                     ▼
+              │          ┌──────────────────────┐
+              │          │ Path Found?          │
+              │          └───────┬──────────────┘
+              │              Yes │          │ No
+              │                  ▼          ▼
+              │        ┌───────────────┐  ┌────────────────────────┐
+              │        │ Return Route  │  │ Allow MEDIUM Fire Nodes│
+              │        └──────┬────────┘  └──────────┬─────────────┘
+              │               │                      │
+              │               │                      ▼
+              │               │          ┌────────────────────────┐
+              │               │          │ Path Found?            │
+              │               │          └───────┬────────────────┘
+              │               │              Yes │            │ No
+              │               │                  ▼            ▼
+              │               │       ┌──────────────┐  ┌─────────────────────┐
+              │               │       │ Emergency    │  │ No Safe Route       │
+              │               │       │ Route Found  │  │ Available           │
+              │               │       └──────┬───────┘  └─────────┬───────────┘
+              └───────────────┴──────────────┴─────────────────────┘
+                                              │
+                                              ▼
+┌──────────────────────────────┐
+│ Update Dashboard             │
+│ • Route                      │
+│ • Fire Status                │
+│ • Risk Levels                │
+│ • Exit Information           │
+└──────────────┬───────────────┘
+               │
+               ▼
+┌──────────────────────────────┐
+│ Generate Push Notifications  │
+│ • Fire Alert                 │
+│ • Exit Blocked               │
+│ • Route Changed              │
+│ • Evacuation Instructions    │
+└──────────────┬───────────────┘
+               │
+               ▼
+┌──────────────────────────────┐
+│ Display Safe Route to User   │
+│ & Mobile Notification        │
+└──────────────┬───────────────┘
+               │
+               ▼
+┌──────────────────────────────┐
+│             END              │
+└──────────────────────────────┘
+```
+
+---
+
+## Workflow Overview
+
+1. **System Initialization**
+   - Load the building graph, node connections, and exit locations.
+   - Initialize the dashboard and sensor simulator.
+
+2. **Fire Simulation**
+   - User selects a starting node and injects fire with a chosen severity level.
+   - Live sensor values (temperature, smoke density, and flame detection) are generated.
+
+3. **Risk Assessment**
+   - Calculate a fire risk score for each node.
+   - Update graph edge weights using:
+
+   ```
+   Cost = Distance × (1 + Risk)
+   ```
+
+4. **Dynamic Route Planning**
+   - Run the Modified A* algorithm.
+   - Prefer completely safe routes.
+   - If unavailable, allow traversal through **Low** fire nodes.
+   - If still unavailable, allow **Medium** fire nodes.
+   - If no path exists, notify that evacuation is not possible.
+
+5. **Live Dashboard Update**
+   - Refresh evacuation route.
+   - Display fire severity.
+   - Highlight blocked exits.
+   - Show node risk levels.
+
+6. **Mobile Notifications**
+   - Send intelligent Pushbullet alerts for:
+     - Fire detection
+     - Exit blockage
+     - Route updates
+     - Emergency evacuation instructions
+
+7. **User Guidance**
+   - Display the safest evacuation path on the dashboard.
+   - Deliver the same guidance to the user's mobile device.
+
+---
+
+## Core Components
+
+- **Tkinter Dashboard**
+- **Sensor Simulator**
+- **Fire Risk Assessment Engine**
+- **Modified A* Routing Algorithm**
+- **Graph-Based Building Model**
+- **Pushbullet Notification Service**
+- **Dynamic Hazard Management**
+
+---
+
+## Technologies Used
+
+- Python
+- Tkinter
+- Modified A* Algorithm
+- Graph Theory
+- JSON Configuration
+- Pushbullet REST API
+- Heap Queue (`heapq`)
+- Object-Oriented Programming (OOP)
+
+---
+
+> This workflow illustrates the complete lifecycle of the Smart Fire Evacuation System—from fire injection and sensor simulation to dynamic path planning, dashboard visualization, and real-time mobile notifications.
