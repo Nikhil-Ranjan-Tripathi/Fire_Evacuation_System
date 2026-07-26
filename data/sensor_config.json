@@ -1,0 +1,37 @@
+{
+  "sensor_types": ["temperature", "smoke", "flame"],
+  "update_interval": 0.5,
+  "battery_warning_threshold": 20,
+  "calibration": {
+    "temperature": {
+      "min": -10,
+      "max": 800,
+      "default": 22,
+      "unit": "celsius"
+    },
+    "smoke": {
+      "min": 0,
+      "max": 700,
+      "default": 0,
+      "unit": "ppm"
+    },
+    "flame": {
+      "min": 0,
+      "max": 1,
+      "default": 0,
+      "unit": "boolean"
+    }
+  },
+  "thresholds": {
+    "temperature": {
+      "warning": 40,
+      "danger": 60,
+      "critical": 200
+    },
+    "smoke": {
+      "warning": 100,
+      "danger": 300,
+      "critical": 500
+    }
+  }
+}

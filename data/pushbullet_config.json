@@ -1,0 +1,22 @@
+{
+  "api_key": "o.HfkG1g5oj2qabaW2GhBAL5xh8or8s5Fe",
+  "users": [
+    {
+      "id": "nikhilpcvn@gmail.com",
+      "name": "Ayan",
+      "devices": ["device_iden_1"]
+    },
+    {
+      "id": "randomweb943@gmail.com", 
+      "name": "Nikhil",
+      "devices": ["device_iden_2"]
+    }
+  ],
+  "default_channel": "fire_evacuation_alerts",
+  "notification_settings": {
+    "emergency": true,
+    "warning": true,
+    "route_update": true,
+    "info": false
+  }
+}

@@ -1,0 +1,33 @@
+{
+  "_comment": "We can add more grids, just that we have to form the connections with the neighbouring node",
+  "building_id": "Fire_Evacuation_Demo_Building",
+  "description": "5x5 grid building with 4 exits(As we increase the nodes, this changes)",
+  "thresholds": {
+    "temp_critical": 60,
+    "smoke_critical": 500,
+    "max_traversal_cost": 50.0,
+    "flame_penalty": 10.0
+  },
+  "nodes": [
+    {"id": "N-01", "x": 0, "y": 0, "type": "corner", "connections": ["N-02", "N-04", "N-05"], "default_weight": 1.0},
+    {"id": "N-02", "x": 1, "y": 0, "type": "corridor", "connections": ["N-01", "N-03", "N-05", "N-04", "N-06"], "default_weight": 1.2},
+    {"id": "N-03", "x": 2, "y": 0, "type": "corridor", "connections": ["N-02", "N-05", "N-06"], "default_weight": 1.2},
+    {"id": "N-04", "x": 0, "y": 1, "type": "corridor", "connections": ["N-01", "N-05", "N-02", "N-08", "N-09"], "default_weight": 1.2},
+    {"id": "N-05", "x": 1, "y": 1, "type": "room", "connections": ["N-04", "N-06", "N-08", "N-01", "N-03", "N-09", "N-02", "N-10"], "default_weight": 2.0},
+    {"id": "N-06", "x": 2, "y": 1, "type": "room", "connections": ["N-11", "N-05", "N-07", "N-03", "N-09", "N-02", "N-10"], "default_weight": 2.0},
+    {"id": "N-07", "x": 3, "y": 1, "type": "room", "connections": ["N-06", "N-10", "N-11"], "default_weight": 2.0},
+    {"id": "N-08", "x": 0, "y": 2, "type": "corridor", "connections": ["N-05", "N-09", "N-04", "N-12", "N-13"], "default_weight": 1.2},
+    {"id": "N-09", "x": 1, "y": 2, "type": "room", "connections": ["N-08", "N-10", "N-12", "N-13", "N-14", "N-04", "N-05", "N-06"], "default_weight": 2.0},
+    {"id": "N-10", "x": 2, "y": 2, "type": "room", "connections": ["N-05", "N-06", "N-07", "N-09", "N-11", "N-13", "N-14", "N-15"], "default_weight": 2.0},
+    {"id": "N-11", "x": 3, "y": 2, "type": "room", "connections": ["N-06", "N-07", "N-10", "N-14", "N-15"], "default_weight": 2.0},
+    {"id": "N-12", "x": 0, "y": 3, "type": "corridor", "connections": ["N-08", "N-09", "N-13", "N-16", "N-17"], "default_weight": 1.2},
+    {"id": "N-13", "x": 1, "y": 3, "type": "room", "connections": ["N-08", "N-09", "N-10", "N-12", "N-14", "N-16", "N-17", "N-18"], "default_weight": 2.0},
+    {"id": "N-14", "x": 2, "y": 3, "type": "room", "connections": ["N-11", "N-09", "N-10", "N-13", "N-15", "N-17", "N-19", "N-18"], "default_weight": 2.0},
+    {"id": "N-15", "x": 3, "y": 3, "type": "room", "connections": ["N-14", "N-19", "N-11", "N-10", "N-18"], "default_weight": 2.0},
+    {"id": "N-16", "x": 0, "y": 4, "type": "corner", "connections": ["N-13", "N-17", "N-12"], "default_weight": 1.0},
+    {"id": "N-17", "x": 1, "y": 4, "type": "corridor", "connections": ["N-12", "N-13", "N-14", "N-16", "N-18"], "default_weight": 1.2},
+    {"id": "N-18", "x": 2, "y": 4, "type": "corridor", "connections": ["N-15", "N-13", "N-14", "N-17", "N-19"], "default_weight": 1.2},
+    {"id": "N-19", "x": 3, "y": 4, "type": "corner", "connections": ["N-18", "N-15", "N-14"], "default_weight": 1.0}
+  ],
+  "exits": ["N-01", "N-19", "N-16", "N-03"]
+}
